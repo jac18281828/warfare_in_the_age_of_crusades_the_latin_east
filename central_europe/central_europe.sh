@@ -17,7 +17,7 @@ PEN=0.25p,200/200/200
 LINE=-W${PEN}
 LAND=255
 LAKE=230
-TRANS=10
+TRANS=15
 
 gmt gtd2cpt --show-sharedir
 
@@ -37,10 +37,11 @@ BASEMAP='-B2dg3d -B+gwhite'
 
 gmt begin central_europe
     gmt basemap -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${BASEMAP} 
-    gmt makecpt -Cgrey -T-50/1500
+    gmt makecpt -Cgrey -T-10/2000
     gmt grdimage ${ETOPO1} -n+c -I+a45+nt1 ${PROJECTION} -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${OPT}
 
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH}  ${PROJECTION} ${OPT} -G${LAND}/${LAND}/${LAND}@${TRANS}
+    
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -S${LAKE}/${LAKE}/${LAKE} 
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${LINE} 
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -Ia/0.5p,240/240/240
