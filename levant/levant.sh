@@ -3,9 +3,9 @@
 # Regional Map: Route of Peter the Hermit’s Peasants’ Crusade, 1096 (see Map from Konstam, pages 48-49/ generate Europe, Upper Mediterranean and Western Anatolia Map Shell, perhaps 55 degrees North latitude to 30 degrees south, henceforth called “Europe-Mediterranean Map Shell”)
 
 WEST=30
-EAST=40
-SOUTH=27
-NORTH=37
+EAST=42
+SOUTH=30
+NORTH=38
 
 WIDTH=15c
 
@@ -36,6 +36,7 @@ gmt set PS_LINE_CAP=ROUND PS_LINE_JOIN=ROUND PS_SCALE_X=1 PS_SCALE_Y=1 MAP_ORIGI
 BASEMAP='-B2dg3d -B+gwhite'
 
 gmt begin levant
+
     gmt basemap -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${BASEMAP} 
     gmt makecpt -Cgrey -T-10/2000
     gmt grdimage ${ETOPO1} -n+c -I+a45+nt1 ${PROJECTION} -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${OPT}
@@ -46,7 +47,7 @@ gmt begin levant
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${LINE} 
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -Ia/0.5p,240/240/240
     # national bounds
-    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N1/1.25p,225/225/225
+    #    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N1/1.25p,225/225/225
     # water bounds
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N3/0.25p,220/220/220@${TRANS}
 
