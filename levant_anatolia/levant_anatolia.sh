@@ -16,7 +16,7 @@ OPT="-V --FONT_ANNOT_PRIMARY=10p"
 PEN=0.25p,200/200/200
 LINE=-W${PEN}
 LAND=255
-LAKE=230
+LAKE=170
 TRANS=15
 
 gmt gtd2cpt --show-sharedir
@@ -45,11 +45,11 @@ gmt begin levant_anatolia
     
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -S${LAKE}/${LAKE}/${LAKE} 
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${LINE} 
-    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -Ia/0.5p,240/240/240
+    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -Ia/0.5p,${LAKE}/${LAKE}/${LAKE}
     # national bounds
     #    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N1/1.25p,225/225/225
     # water bounds
-    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N3/0.25p,220/220/220@${TRANS}
+    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N3/0.25p,${LAKE}/${LAKE}/${LAKE}
 
     #-F+f11p,Helvetica-Bold+jCB
     #-F+f10p,Palatino-Roman+jCB    
