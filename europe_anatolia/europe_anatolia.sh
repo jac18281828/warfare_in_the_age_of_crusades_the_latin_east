@@ -2,12 +2,10 @@
 
 # Regional Map: Route of Peter the Hermit’s Peasants’ Crusade, 1096 (see Map from Konstam, pages 48-49/ generate Europe, Upper Mediterranean and Western Anatolia Map Shell, perhaps 55 degrees North latitude to 30 degrees south, henceforth called “Europe-Mediterranean Map Shell”)
 
-WEST=25
+WEST=-5
 EAST=40
-
-NORTH=45
-SOUTH=35
-
+SOUTH=30
+NORTH=55
 
 WIDTH=15c
 
@@ -38,7 +36,7 @@ gmt set PS_LINE_CAP=ROUND PS_LINE_JOIN=ROUND PS_SCALE_X=1 PS_SCALE_Y=1 MAP_ORIGI
 
 BASEMAP='-B10dg10d -B+gwhite'
                                                                            
-gmt begin anatolia
+gmt begin europe_anatolia
     gmt basemap -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${BASEMAP} 
     gmt makecpt -Cgrey -T-50/1500
     gmt grdimage ${ETOPO1} -n+c -I+a45+nt1 ${PROJECTION} -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${OPT}
