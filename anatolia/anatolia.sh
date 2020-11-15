@@ -30,7 +30,7 @@ ETOPO1=../ETOPO1_Bed_g_gmt4.grd
 
 if [ ! -f ${ETOPO1} ]
 then
-    echo "ETOPO1 GRID file is required"
+    echo "ETOPO1 GRID file ${ETOPO1} is required"
     exit 1
 fi
 
