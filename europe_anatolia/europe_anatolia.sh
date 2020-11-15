@@ -3,7 +3,7 @@
 # Regional Map: Route of Peter the Hermit’s Peasants’ Crusade, 1096 (see Map from Konstam, pages 48-49/ generate Europe, Upper Mediterranean and Western Anatolia Map Shell, perhaps 55 degrees North latitude to 30 degrees south, henceforth called “Europe-Mediterranean Map Shell”)
 
 WEST=-5
-EAST=40
+EAST=42
 SOUTH=30
 NORTH=55
 
