@@ -19,6 +19,7 @@ LAND=255
 LAKE=170
 TRANS=15
 MINAREA=-A100
+SCALEBAR="f35/50/40/500M"
 
 gmt gtd2cpt --show-sharedir
 
@@ -46,7 +47,7 @@ gmt begin europe_anatolia
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${LINE} ${MINAREA}
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -I0,1,2/0.5p,${LAKE}/${LAKE}/${LAKE} ${MINAREA}
     # water bounds
-    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N3/0.25p,${LAKE}/${LAKE}/${LAKE} ${MINAREA}
+    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -L${SCALEBAR} -N3/0.25p,${LAKE}/${LAKE}/${LAKE} ${MINAREA}
 
     #-F+f11p,Helvetica-Bold+jCB
     #-F+f10p,Palatino-Roman+jCB    

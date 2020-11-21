@@ -18,6 +18,7 @@ LINE=-W${PEN}
 LAND=255
 LAKE=170
 TRANS=15
+SCALEBAR="f12/50/40/50M"
 
 gmt gtd2cpt --show-sharedir
 
@@ -48,7 +49,7 @@ gmt begin central_europe
     # national bounds
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N1/1.25p,225/225/225
     # water bounds
-    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N3/0.25p,${LAKE}/${LAKE}/${LAKE}
+    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT}   -L${SCALEBAR} -N3/0.25p,${LAKE}/${LAKE}/${LAKE}
 
     #-F+f11p,Helvetica-Bold+jCB
     #-F+f10p,Palatino-Roman+jCB    

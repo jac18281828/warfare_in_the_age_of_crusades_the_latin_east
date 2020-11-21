@@ -20,6 +20,7 @@ LAKE=170
 RIVER=220
 TRANS=15
 MINAREA=-A100
+SCALEBAR="f25/50/40/500M"
 
 gmt gtd2cpt --show-sharedir
 
@@ -53,7 +54,7 @@ gmt begin europe_mediterranean
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${LINE} ${MINAREA}
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -I0/0.5p,${RIVER}/${RIVER}/${RIVER} -I1/0.5p,${RIVER}/${RIVER}/${RIVER} -I2/0.5p,${RIVER}/${RIVER}/${RIVER} ${MINAREA}
     # water bounds
-    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N3/0.25p,${LAKE}/${LAKE}/${LAKE} ${MINAREA}
+    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -L${SCALEBAR} -N3/0.25p,${LAKE}/${LAKE}/${LAKE} ${MINAREA}
 
     #-F+f11p,Helvetica-Bold+jCB
     cat city.dat | gmt text -Dj6p -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -F+f6p,Palatino-Roman+jCB    
