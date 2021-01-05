@@ -16,7 +16,7 @@ LINE=-W${PEN}
 LAND=255
 LAKE=170
 TRANS=15
-SCALEBAR="f33/34/40/50M"
+SCALEBAR="f33/35/40/50M"
 
 gmt gtd2cpt --show-sharedir
 
