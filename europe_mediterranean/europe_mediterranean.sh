@@ -22,11 +22,24 @@ TRANS=15
 MINAREA=-A100
 SCALEBAR="f25/50/40/500M"
 
+VERSION=$(gmt --version)
+
+if [[ ${VERSION} != 6* ]]
+then
+    gmt --version
+    echo gmt 6 reqired
+    exit 1
+fi
+
 gmt gtd2cpt --show-sharedir
 
 # ETOPO1_Bed_g_gmt4.grd is the NETCDF encoded ETOPO1 dataset downloaded for GMT4 Bedrock
-
-ETOPO1=../ETOPO1_Bed_g_gmt4.grd
+if [ -f /bedrock/ETOPO1_Bed_g_gmt4.grd ]
+then
+    ETOPO1=/bedrock/ETOPO1_Bed_g_gmt4.grd
+else
+    ETOPO1=../ETOPO1_Bed_g_gmt4.grd
+fi
 
 if [ ! -f ${ETOPO1} ]
 then
@@ -70,7 +83,6 @@ gmt begin europe_mediterranean
         cat battle.dat | gmt plot -S+4p -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT}
     fi
 
-
     if [ -f place.dat ]
     then
         cat place.dat | gmt text -Dj6p -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -F+f6p,Palatino-Roman+jCB
@@ -85,3 +97,8 @@ gmt begin border
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N1/0.25p,${LAKE}/${LAKE}/${LAKE} ${MINAREA}
 
 gmt end
+
+if [ "--sleep" == $1 ]
+then
+    sleep 20
+fi

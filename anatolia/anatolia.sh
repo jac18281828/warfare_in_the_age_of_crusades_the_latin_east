@@ -23,11 +23,25 @@ TRANS=15
 MINAREA=-A100
 SCALEBAR="f32/42.5/40/250M"
 
+VERSION=$(gmt --version)
+
+if [[ ${VERSION} != 6* ]]
+then
+    gmt --version
+    echo gmt 6 reqired
+    exit 1
+fi
+
 gmt gtd2cpt --show-sharedir
 
 # ETOPO1_Bed_g_gmt4.grd is the NETCDF encoded ETOPO1 dataset downloaded for GMT4 Bedrock
 
-ETOPO1=../ETOPO1_Bed_g_gmt4.grd
+if [ -f /bedrock/ETOPO1_Bed_g_gmt4.grd ]
+then
+    ETOPO1=/bedrock/ETOPO1_Bed_g_gmt4.grd
+else
+    ETOPO1=../ETOPO1_Bed_g_gmt4.grd
+fi
 
 if [ ! -f ${ETOPO1} ]
 then
@@ -70,3 +84,8 @@ gmt begin anatolia
     fi
 
 gmt end
+
+if [ "--sleep" == $1 ]
+then
+    sleep 20
+fi

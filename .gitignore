@@ -1,4 +1,5 @@
 .DS_Store
 gmt.conf
 gmt.history
+pdf/
 *.grd

@@ -18,11 +18,24 @@ LAKE=170
 TRANS=15
 SCALEBAR="f33/35/40/50M"
 
+VERSION=$(gmt --version)
+
+if [[ ${VERSION} != 6* ]]
+then
+    gmt --version
+    echo gmt 6 reqired
+    exit 1
+fi
+
 gmt gtd2cpt --show-sharedir
 
 # ETOPO1_Bed_g_gmt4.grd is the NETCDF encoded ETOPO1 dataset downloaded for GMT4 Bedrock
-
-ETOPO1=../ETOPO1_Bed_g_gmt4.grd
+if [ -f /bedrock/ETOPO1_Bed_g_gmt4.grd ]
+then
+    ETOPO1=/bedrock/ETOPO1_Bed_g_gmt4.grd
+else
+    ETOPO1=../ETOPO1_Bed_g_gmt4.grd
+fi
 
 if [ ! -f ${ETOPO1} ]
 then
@@ -75,3 +88,7 @@ gmt begin cyprus
 gmt end
 # try gmt end show
 
+if [ "--sleep" == $1 ]
+then
+    sleep 20
+fi
