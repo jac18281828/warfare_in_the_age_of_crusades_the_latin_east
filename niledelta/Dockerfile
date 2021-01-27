@@ -10,4 +10,4 @@ WORKDIR /${PROJECT}
 COPY ${PROJECT}.sh .
 COPY city.dat .
 
-ENTRYPOINT /niledelta/niledelta.sh --sleep
+CMD /niledelta/niledelta.sh --sleep

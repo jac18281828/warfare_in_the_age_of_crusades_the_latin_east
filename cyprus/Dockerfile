@@ -9,5 +9,6 @@ WORKDIR /${PROJECT}
 
 COPY ${PROJECT}.sh .
 COPY city.dat .
+COPY castle.dat .
 
-ENTRYPOINT /cyprus/cyprus.sh --sleep
+CMD /cyprus/cyprus.sh --sleep

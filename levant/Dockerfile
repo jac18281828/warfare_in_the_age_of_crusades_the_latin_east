@@ -13,4 +13,4 @@ COPY city.dat .
 COPY castle.dat .
 COPY place.dat .
 
-ENTRYPOINT /levant/levant.sh --sleep
+CMD /levant/levant.sh --sleep

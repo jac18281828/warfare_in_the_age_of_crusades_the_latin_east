@@ -10,4 +10,4 @@ WORKDIR /${PROJECT}
 COPY ${PROJECT}.sh .
 COPY city.dat .
 
-ENTRYPOINT /balkans/balkans.sh --sleep
+CMD /balkans/balkans.sh --sleep

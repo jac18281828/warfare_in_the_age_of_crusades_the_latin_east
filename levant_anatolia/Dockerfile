@@ -10,4 +10,4 @@ WORKDIR /${PROJECT}
 COPY ${PROJECT}.sh .
 COPY city.dat .
 
-ENTRYPOINT /levant_anatolia/levant_anatolia.sh --sleep
+CMD /levant_anatolia/levant_anatolia.sh --sleep

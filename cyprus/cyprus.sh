@@ -79,6 +79,12 @@ gmt begin cyprus
         cat battle.dat | gmt plot -S+4p -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT}
     fi
 
+    if [ -f castle.dat ]
+    then
+        cat castle.dat | gmt text -Dj6p -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -F+f10p,Optima-Bold+jCB    
+        cat castle.dat | gmt plot -Sd4p -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT}
+    fi
+
     if [ -f place.dat ]
     then
         cat place.dat | gmt text -Dj6p -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -F+f6p,Palatino-Roman+jCB

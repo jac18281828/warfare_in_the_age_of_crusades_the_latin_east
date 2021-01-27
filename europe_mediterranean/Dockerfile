@@ -12,4 +12,4 @@ COPY battle.dat .
 COPY city.dat .
 COPY place.dat .
 
-ENTRYPOINT /europe_mediterranean/europe_mediterranean.sh
+CMD /europe_mediterranean/europe_mediterranean.sh --sleep

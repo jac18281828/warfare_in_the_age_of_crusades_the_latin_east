@@ -12,5 +12,5 @@ COPY battle.dat .
 COPY city.dat .
 COPY place.dat .
 
-ENTRYPOINT /anatolia/anatolia.sh --sleep
+CMD /anatolia/anatolia.sh --sleep
 

@@ -98,7 +98,7 @@ gmt begin border
 
 gmt end
 
-if [ "--sleep" == $1 ]
+if [[ "--sleep" == $1 ]]
 then
     sleep 20
 fi

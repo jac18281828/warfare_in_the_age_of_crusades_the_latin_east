@@ -11,4 +11,4 @@ COPY ${PROJECT}.sh .
 COPY city.dat .
 COPY battle.dat .
 
-ENTRYPOINT /central_europe/central_europe.sh --sleep
+CMD /central_europe/central_europe.sh --sleep
