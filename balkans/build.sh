@@ -1,14 +1,29 @@
 #!/usr/bin/env /bin/sh
 
-set -e
+ALLTAG=gmt_latineast_all:1.0
+WORKDIR=latineast
+PROJECT=balkans
+TAG="gmt_${WORKDIR}_${PROJECT}:1.0"
 
-TAG='gmt_balkans:1.0'
+docker build -t ${TAG} -<<EOF
 
-docker build --tag ${TAG} .
+FROM ${ALLTAG}
+
+ARG PROJECT=${PROJECT}
+
+ENV LANG=C.UTF-8 \
+    TZ=CDT6CST
+
+WORKDIR /latineast/${PROJECT}
+
+RUN ls -l
+
+CMD ./${PROJECT}.sh --sleep
+EOF
 
 CONTAINER=$(docker run -d --rm ${TAG})
 
-OUTPUT=/balkans/balkans.pdf
+OUTPUT=/${WORKDIR}/${PROJECT}/${PROJECT}.pdf
 
 PDF=../pdf
 
@@ -21,7 +36,7 @@ FILE="NOTFOUND"
 while [ "NOTFOUND" = "${FILE}" ]
 do
     sleep 1
-#    docker logs ${CONTAINER}    
+    #docker logs ${CONTAINER}
     FILE=$(docker exec ${CONTAINER} /bin/sh -c "if [ ! -f ${OUTPUT} ]; then echo NOTFOUND; fi")
 done
 

@@ -2,13 +2,32 @@
 
 set -e
 
-TAG='gmt_niledelta:1.0'
+ALLTAG=gmt_latineast_all:1.0
+WORKDIR=latineast
+PROJECT=niledelta
+TAG="gmt_${WORKDIR}_${PROJECT}:1.0"
 
-docker build --tag ${TAG} .
+docker build -t ${TAG} -<<EOF
+
+FROM ${ALLTAG}
+
+ARG PROJECT=${PROJECT}
+
+ENV LANG=C.UTF-8 \
+    TZ=CDT6CST
+
+WORKDIR /latineast/${PROJECT}
+
+RUN ls -l
+
+CMD ./${PROJECT}.sh --sleep
+EOF
+
+docker run -i --rm ${TAG}
 
 CONTAINER=$(docker run -d --rm ${TAG})
 
-OUTPUT=/niledelta/niledelta.pdf
+OUTPUT=/${WORKDIR}/${PROJECT}/${PROJECT}.pdf
 
 PDF=../pdf
 
@@ -18,10 +37,10 @@ then
 fi
 
 FILE="NOTFOUND"
-while [ "NOTFOUND" = ${FILE} ]
+while [ "NOTFOUND" = "${FILE}" ]
 do
     sleep 1
-    #    docker logs ${CONTAINER}    
+    #docker logs ${CONTAINER}
     FILE=$(docker exec ${CONTAINER} /bin/sh -c "if [ ! -f ${OUTPUT} ]; then echo NOTFOUND; fi")
 done
 
