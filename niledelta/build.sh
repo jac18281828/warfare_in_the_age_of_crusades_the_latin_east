@@ -1,4 +1,4 @@
-#!/usr/bin/env /bin/bash
+#!/usr/bin/env /bin/sh
 
 set -e
 
@@ -18,10 +18,10 @@ then
 fi
 
 FILE="NOTFOUND"
-while [[ "NOTFOUND" == ${FILE} ]]
+while [ "NOTFOUND" = ${FILE} ]
 do
     sleep 1
-#    docker logs ${CONTAINER}    
+    #    docker logs ${CONTAINER}    
     FILE=$(docker exec ${CONTAINER} /bin/sh -c "if [ ! -f ${OUTPUT} ]; then echo NOTFOUND; fi")
 done
 

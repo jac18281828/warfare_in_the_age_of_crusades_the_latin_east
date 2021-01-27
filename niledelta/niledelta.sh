@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env /bin/sh
 
 WEST=29
 EAST=35
@@ -20,7 +20,15 @@ SCALEBAR="f30/30/40/50M"
 
 VERSION=$(gmt --version)
 
-if [[ ${VERSION} != 6* ]]
+if [ ! -x $(which gmt) ]
+then
+    echo GMT required
+    exit 1
+fi
+
+VERSION=$(gmt --version)
+
+if [ "${VERSION}" = [0-5]* ]
 then
     gmt --version
     echo gmt 6 reqired
@@ -88,7 +96,7 @@ gmt begin niledelta
 gmt end
 # try gmt end show
 
-if [ "--sleep" == $1 ]
+if [ "--sleep" = "$1" ]
 then
     sleep 20
 fi

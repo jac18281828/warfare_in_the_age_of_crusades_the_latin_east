@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-
-# Regional Map: Route of Peter the Hermit’s Peasants’ Crusade, 1096 (see Map from Konstam, pages 48-49/ generate Europe, Upper Mediterranean and Western Anatolia Map Shell, perhaps 55 degrees North latitude to 30 degrees south, henceforth called “Europe-Mediterranean Map Shell”)
+#!/usr/bin/env /bin/sh
 
 WEST=30
 EAST=42
@@ -83,7 +81,7 @@ gmt begin levant_anatolia
 gmt end
 # try gmt end show
 
-if [ "--sleep" == $1 ]
+if [ "--sleep" = "$1" ]
 then
     sleep 20
 fi
