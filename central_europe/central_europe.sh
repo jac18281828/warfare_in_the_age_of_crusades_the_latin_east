@@ -39,9 +39,11 @@ gmt gtd2cpt --show-sharedir
 
 # ETOPO1_Bed_g_gmt4.grd is the NETCDF encoded ETOPO1 dataset downloaded for GMT4 Bedrock
 
-if [ -f /bedrock/ETOPO1_Bed_g_gmt4.grd ]
+BEDROCK=ETOPO1_levant.grd
+
+if [ -f /bedrock/${BEDROCK} ]
 then
-    ETOPO1=/bedrock/ETOPO1_Bed_g_gmt4.grd
+    ETOPO1=/bedrock/${BEDROCK}
 else
     ETOPO1=../ETOPO1_Bed_g_gmt4.grd
 fi

@@ -23,8 +23,6 @@ RUN ls -l
 CMD ./${PROJECT}.sh --sleep
 EOF
 
-docker run -i --rm ${TAG}
-
 CONTAINER=$(docker run -d --rm ${TAG})
 
 OUTPUT=/${WORKDIR}/${PROJECT}/${PROJECT}.pdf
@@ -41,8 +39,10 @@ while [ "NOTFOUND" = "${FILE}" ]
 do
     sleep 1
     #docker logs ${CONTAINER}
-    FILE=$(docker exec ${CONTAINER} /bin/sh -c "if [ ! -f ${OUTPUT} ]; then echo NOTFOUND; fi")
+    FILE=$(docker exec ${CONTAINER} /bin/sh -c "if [ ! -s ${OUTPUT} ]; then echo NOTFOUND; fi")
 done
+
+sleep 5
 
 echo cp ${CONTAINER}:${OUTPUT} ${PDF}
 docker cp ${CONTAINER}:${OUTPUT} ${PDF}
