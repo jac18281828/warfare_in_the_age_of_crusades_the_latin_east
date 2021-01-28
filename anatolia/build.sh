@@ -5,10 +5,8 @@ set -e
 ALLTAG=gmt_latineast_all:1.0
 WORKDIR=latineast
 PROJECT=anatolia
-TAG="gmt_${WORKDIR}_${PROJECT}:1.0"
 
-docker build -t ${TAG} -<<EOF
-
+IMAGEID=$(docker build -q -<<EOF
 FROM ${ALLTAG}
 
 ARG PROJECT=${PROJECT}
@@ -21,9 +19,11 @@ WORKDIR /latineast/${PROJECT}
 RUN ls -l
 
 CMD ./${PROJECT}.sh --sleep
-EOF
 
-CONTAINER=$(docker run -d --rm ${TAG})
+EOF
+       )
+
+CONTAINER=$(docker run -d --rm -t ${IMAGEID})
 
 OUTPUT=/${WORKDIR}/${PROJECT}/${PROJECT}.pdf
 
