@@ -95,7 +95,6 @@ gmt begin balkans
         cat place.dat | gmt text -Dj6p -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -F+f6p,Palatino-Roman+jCB
     fi
 
-
 gmt end
 # try gmt end show
 
