@@ -1,7 +1,7 @@
 #!/usr/bin/env /bin/sh
 
-WEST=5
-EAST=40
+WEST=10
+EAST=38
 SOUTH=34
 NORTH=47
 
@@ -16,7 +16,7 @@ LINE=-W${PEN}
 LAND=255
 LAKE=170
 TRANS=15
-SCALEBAR="f35/40/40/500M"
+SCALEBAR="f35/40/40/250M"
 
 VERSION=$(gmt --version)
 
@@ -66,9 +66,9 @@ gmt begin balkans
 
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH}  ${PROJECTION} ${OPT} -G${LAND}/${LAND}/${LAND}@${TRANS}
     
-    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -S${LAKE}/${LAKE}/${LAKE} 
+    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -A100 -S${LAKE}/${LAKE}/${LAKE} 
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${LINE} 
-    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -Ia/0.5p,${LAKE}/${LAKE}/${LAKE}
+    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -I1,2/0.5p,${LAKE}/${LAKE}/${LAKE}
     # national bounds
     #    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -N1/1.25p,225/225/225
     # water bounds
