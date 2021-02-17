@@ -2,7 +2,7 @@
 
 set -e
 
-DEBTAG='gmt_debian:1.0'
+DEBTAG='gmt_bedrock_asiaminor:1.0'
 
 docker build --tag ${DEBTAG} .
 
