@@ -1,9 +1,22 @@
 #!/usr/bin/env /bin/sh
 
+
 WEST=29
 EAST=35
 SOUTH=29.5
 NORTH=32
+
+if [ "--east" = "$1" ]
+then
+    shift;
+    if [ -n "$1" ]
+    then
+        EAST=$1; shift
+    else
+        echo "Easting required"
+        exit 1
+    fi
+fi
 
 WIDTH=15c
 
@@ -57,7 +70,7 @@ gmt set PS_LINE_CAP=ROUND PS_LINE_JOIN=ROUND PS_SCALE_X=1 PS_SCALE_Y=1 MAP_ORIGI
 
 BASEMAP='-B2dg3d -B+gwhite'
 
-gmt begin niledelta
+gmt begin niledelta_${EAST}
 
     gmt basemap -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${BASEMAP} 
     gmt makecpt -Cgrey -T-10/2000
@@ -97,6 +110,8 @@ gmt begin niledelta
 
 gmt end
 # try gmt end show
+
+ls -l niledelta_${EAST}.pdf
 
 if [ "--sleep" = "$1" ]
 then

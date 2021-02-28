@@ -19,31 +19,37 @@ WORKDIR /latineast/${PROJECT}
 
 RUN ls -l
 
-CMD ./${PROJECT}.sh --sleep
+CMD ./${PROJECT}.sh && ./${PROJECT}.sh --east 33 --sleep
 
 EOF
-       )
-
-CONTAINER=$(docker run -d --rm -t ${IMAGEID})
-
-OUTPUT=/${WORKDIR}/${PROJECT}/${PROJECT}.pdf
+)
 
 PDF=../pdf
 
-if [ ! -d ${PDF} ]
-then
-    mkdir -p ${PDF}
-fi
+CONTAINER=$(docker run -d --rm -t ${IMAGEID})
 
-FILE="NOTFOUND"
-while [ "NOTFOUND" = "${FILE}" ]
+for EAST in 35 33;
 do
-    sleep 1
-    #docker logs ${CONTAINER}
-    FILE=$(docker exec ${CONTAINER} /bin/sh -c "if [ ! -s ${OUTPUT} ]; then echo NOTFOUND; fi")
+
+    OUTPUT=/${WORKDIR}/${PROJECT}/${PROJECT}_${EAST}.pdf
+
+    if [ ! -d ${PDF} ]
+    then
+        mkdir -p ${PDF}
+    fi
+
+    FILE="NOTFOUND"
+    while [ "NOTFOUND" = "${FILE}" ]
+    do
+        sleep 1
+        #docker logs ${CONTAINER}
+        docker exec ${CONTAINER} ls -l /${WORKDIR}/${PROJECT}/
+        echo ${OUTPUT}
+        FILE=$(docker exec ${CONTAINER} /bin/sh -c "if [ ! -s ${OUTPUT} ]; then echo NOTFOUND; fi")
+    done
+
+    sleep 5
+
+    echo cp ${CONTAINER}:${OUTPUT} ${PDF}
+    docker cp ${CONTAINER}:${OUTPUT} ${PDF}
 done
-
-sleep 5
-
-echo cp ${CONTAINER}:${OUTPUT} ${PDF}
-docker cp ${CONTAINER}:${OUTPUT} ${PDF}
