@@ -17,8 +17,6 @@ ENV LANG=C.UTF-8 \
 
 WORKDIR /latineast/${PROJECT}
 
-RUN ls -l
-
 CMD ./${PROJECT}.sh && ./${PROJECT}.sh --east 33 --sleep
 
 EOF
@@ -43,8 +41,6 @@ do
     do
         sleep 1
         #docker logs ${CONTAINER}
-        docker exec ${CONTAINER} ls -l /${WORKDIR}/${PROJECT}/
-        echo ${OUTPUT}
         FILE=$(docker exec ${CONTAINER} /bin/sh -c "if [ ! -s ${OUTPUT} ]; then echo NOTFOUND; fi")
     done
 

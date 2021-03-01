@@ -4,7 +4,7 @@ set -e
 
 DEBTAG='gmt_bedrock_asiaminor:1.0'
 
-docker build --tag ${DEBTAG} .
+docker build --tag ${DEBTAG} asiaminor/
 
 ALLTAG='gmt_latineast_all:1.0'
 
@@ -31,6 +31,6 @@ EOF
 for dir in anatolia balkans central_europe cyprus europe_mediterranean levant niledelta
 do
     echo $dir ...
-    (cd $dir && sh -v ./build.sh)
+    (cd $dir && sh ./build.sh)
 done
           
