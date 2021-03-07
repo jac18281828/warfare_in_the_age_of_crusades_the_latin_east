@@ -28,7 +28,8 @@ CMD /bin/bash
 EOF
 
 # anatolia balkans central_europe cyprus europe_anatolia europe_mediterranean levant levant_anatolia niledelta
-for dir in anatolia balkans central_europe cyprus europe_mediterranean levant niledelta
+# for dir in anatolia balkans central_europe cyprus europe_mediterranean levant niledelta
+for dir in niledelta
 do
     echo $dir ...
     (cd $dir && sh ./build.sh)
