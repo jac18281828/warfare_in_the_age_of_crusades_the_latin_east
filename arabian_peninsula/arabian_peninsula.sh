@@ -1,10 +1,10 @@
 #!/usr/bin/env /bin/sh
 
 WEST=25
-EAST=40
+EAST=65
 
-NORTH=43
-SOUTH=35
+NORTH=44
+SOUTH=10
 
 
 WIDTH=15c
@@ -40,7 +40,7 @@ gmt gtd2cpt --show-sharedir
 
 # ETOPO1_Bed_g_gmt4.grd is the NETCDF encoded ETOPO1 dataset downloaded for GMT4 Bedrock
 
-BEDROCK=ETOPO1_asiaminor.grd
+BEDROCK=ETOPO1_arabia.grd
 
 if [ -f /bedrock/${BEDROCK} ]
 then
@@ -61,7 +61,7 @@ gmt set PS_LINE_CAP=ROUND PS_LINE_JOIN=ROUND PS_SCALE_X=1 PS_SCALE_Y=1 MAP_ORIGI
 
 BASEMAP='-B10dg10d -B+gwhite'
                                                                            
-gmt begin anatolia
+gmt begin arabian_peninsula
     gmt basemap -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${BASEMAP} 
     gmt makecpt -Cgrey -T-50/1500
     gmt grdimage ${ETOPO1} -n+c -I+a45+nt1 ${PROJECTION} -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${OPT}
@@ -69,7 +69,7 @@ gmt begin anatolia
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -G${LAND}/${LAND}/${LAND}@${TRANS} ${MINAREA}
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -S${LAKE}/${LAKE}/${LAKE} ${MINAREA}
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${LINE} ${MINAREA}
-    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -Ia/0.5p,${LAKE}/${LAKE}/${LAKE} ${MINAREA}
+    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -I1,2/0.5p,${LAKE}/${LAKE}/${LAKE} ${MINAREA}
     # water bounds
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT}  -L${SCALEBAR} -N3/0.25p,${LAKE}/${LAKE}/${LAKE} ${MINAREA}
 

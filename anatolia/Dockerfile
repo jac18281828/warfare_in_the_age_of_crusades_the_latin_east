@@ -1,4 +1,4 @@
-FROM gmt_latineast_all:1.0
+FROM gmt_latineast_asiaminor:1.0
 
 ARG PROJECT=anatolia
 

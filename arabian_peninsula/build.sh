@@ -2,10 +2,9 @@
 
 set -e
 
-ALLTAG=gmt_latineast_asiaminor:1.0
+ALLTAG=gmt_latineast_arabia:1.0
 WORKDIR=latineast
-PROJECT=central_europe
-TAG="gmt_${WORKDIR}_${PROJECT}:1.0"
+PROJECT=arabian_peninsula
 
 IMAGEID=$(docker build -q -<<EOF
 FROM ${ALLTAG}
@@ -22,7 +21,7 @@ RUN ls -l
 CMD ./${PROJECT}.sh --sleep
 
 EOF
-       )
+)
 
 CONTAINER=$(docker run -d --rm -t ${IMAGEID})
 
@@ -39,24 +38,11 @@ FILE="NOTFOUND"
 while [ "NOTFOUND" = "${FILE}" ]
 do
     sleep 1
-    #docker logs ${CONTAINER}
-    FILE=$(docker exec ${CONTAINER} /bin/sh -c "if [ ! -f ${OUTPUT} ]; then echo NOTFOUND; fi")
-done
-
-echo cp ${CONTAINER}:${OUTPUT} ${PDF}
-docker cp ${CONTAINER}:${OUTPUT} ${PDF}
-
-OUTPUT=/${WORKDIR}/${PROJECT}/inset.pdf
-
-FILE="NOTFOUND"
-while [ "NOTFOUND" = "${FILE}" ]
-do
-    sleep 1
-    #docker logs ${CONTAINER}
+#    docker logs ${CONTAINER}
     FILE=$(docker exec ${CONTAINER} /bin/sh -c "if [ ! -s ${OUTPUT} ]; then echo NOTFOUND; fi")
 done
 
 sleep 5
 
 echo cp ${CONTAINER}:${OUTPUT} ${PDF}
-docker cp ${CONTAINER}:${OUTPUT} ${PDF}/${PROJECT}_inset.pdf
+docker cp ${CONTAINER}:${OUTPUT} ${PDF}

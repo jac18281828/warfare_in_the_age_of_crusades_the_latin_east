@@ -2,7 +2,7 @@
 
 set -e
 
-ALLTAG=gmt_latineast_all:1.0
+ALLTAG=gmt_latineast_asiaminor:1.0
 WORKDIR=latineast
 PROJECT=cyprus
 TAG="gmt_${WORKDIR}_${PROJECT}:1.0"

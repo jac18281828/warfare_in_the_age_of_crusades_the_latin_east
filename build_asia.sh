@@ -2,15 +2,14 @@
 
 set -e
 
-DEBTAG='gmt_bedrock_asiaminor:1.0'
+TAG="gmt_bedrock_asiaminor:1.0"
+docker build --tag ${TAG} asiaminor/
 
-docker build --tag ${DEBTAG} asiaminor/
-
-ALLTAG='gmt_latineast_all:1.0'
+ALLTAG='gmt_latineast_asiaminor:1.0'
 
 docker build --tag ${ALLTAG} -f- . <<EOF
 
-FROM ${DEBTAG}
+FROM gmt_bedrock_asiaminor:1.0
 
 WORKDIR /latineast
 
@@ -27,9 +26,7 @@ COPY niledelta niledelta/
 CMD /bin/bash
 EOF
 
-# anatolia balkans central_europe cyprus europe_anatolia europe_mediterranean levant levant_anatolia niledelta
-# for dir in anatolia balkans central_europe cyprus europe_mediterranean levant niledelta
-for dir in niledelta
+for dir in anatolia balkans central_europe cyprus europe_mediterranean levant niledelta 
 do
     echo $dir ...
     (cd $dir && sh ./build.sh)
