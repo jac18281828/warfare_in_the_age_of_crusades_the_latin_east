@@ -26,6 +26,8 @@ COPY niledelta niledelta/
 CMD /bin/bash
 EOF
 
+#docker scan ${ALLTAG}
+
 for dir in anatolia balkans central_europe cyprus europe_mediterranean levant niledelta 
 do
     echo $dir ...

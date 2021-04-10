@@ -2,7 +2,7 @@ FROM jac18281828/gmt:latest as builder
 
 WORKDIR /bedrock
 
-ARG EAST=70
+ARG EAST=85
 ARG WEST=-5
 ARG NORTH=55
 ARG SOUTH=10
