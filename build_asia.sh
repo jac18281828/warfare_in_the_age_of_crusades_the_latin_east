@@ -28,7 +28,7 @@ EOF
 
 #docker scan ${ALLTAG}
 
-for dir in anatolia balkans central_europe cyprus europe_mediterranean levant niledelta 
+for dir in anatolia balkans central_europe cyprus europe_mediterranean europe_anatolia levant niledelta 
 do
     echo $dir ...
     (cd $dir && sh ./build.sh)

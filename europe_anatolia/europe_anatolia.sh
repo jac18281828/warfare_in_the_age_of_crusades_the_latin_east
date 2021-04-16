@@ -5,7 +5,7 @@
 WEST=-5
 EAST=40
 SOUTH=30
-NORTH=55
+NORTH=50
 
 WIDTH=15c
 
@@ -17,6 +17,7 @@ PEN=0.25p,200/200/200
 LINE=-W${PEN}
 LAND=255
 LAKE=170
+RIVER=220
 TRANS=15
 MINAREA=-A100
 SCALEBAR="f35/50/40/500M"
@@ -66,7 +67,7 @@ gmt begin europe_anatolia
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH}  ${PROJECTION} ${OPT} -G${LAND}/${LAND}/${LAND}@${TRANS} ${MINAREA}
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -S${LAKE}/${LAKE}/${LAKE} ${MINAREA}
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${LINE} ${MINAREA}
-    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -I0,1,2/0.5p,${LAKE}/${LAKE}/${LAKE} ${MINAREA}
+    gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -I0/0.5p,${RIVER}/${RIVER}/${RIVER} -I1/0.5p,${RIVER}/${RIVER}/${RIVER} -I2/0.5p,${RIVER}/${RIVER}/${RIVER} ${MINAREA}    
     # water bounds
     gmt coast -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -L${SCALEBAR} -N3/0.25p,${LAKE}/${LAKE}/${LAKE} ${MINAREA}
 
