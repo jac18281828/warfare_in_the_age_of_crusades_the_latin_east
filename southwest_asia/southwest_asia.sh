@@ -78,6 +78,14 @@ gmt begin southwest_asia
     gmt basemap -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} ${BASEMAP} 
     gmt makecpt -Cgrey -T-50/1500
     gmt grdimage ${ETOPO1} -n+c ${PROJECTION} -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${OPT}
+
+    if [ -f city.dat ]
+    then
+        cat city.dat | gmt text -Dj6p -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT} -F+f10p,Palatino-Roman+jCB    
+        cat city.dat | gmt plot -Sc2p -R${WEST}/${EAST}/${SOUTH}/${NORTH} ${PROJECTION} ${OPT}
+    fi
+
+    
 gmt end
 
 if [ "--sleep" = "$1" ]
