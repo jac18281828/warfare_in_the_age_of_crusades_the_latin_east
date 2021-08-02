@@ -1,5 +1,11 @@
 #!/usr/bin/env /bin/sh
 
+# balkans 2
+#SOUTH=34
+#NORTH=47
+
+# balkans 3
+
 WEST=10
 EAST=38
 SOUTH=32
