@@ -1,0 +1,105 @@
+version: "3.9"
+services:
+  bedrock_asiaminor:
+    build:
+      context: asiaminor/
+    network_mode: none
+  bedrock_arabia:
+    build:
+      context: arabia/
+    network_mode: none
+  latineast_asiaminor:
+    build:
+      context: ./
+    depends_on:
+      - bedrock_asiaminor
+    network_mode: none
+  latineast_arabia:
+    build:
+      context: ./
+      dockerfile: Dockerfile.arabia
+    depends_on:
+      - bedrock_asiaminor
+    network_mode: none
+  anatolia:
+    build:
+      context: anatolia/
+    volumes:
+      - ./pdf:/pdf
+    network_mode: none      
+    depends_on:
+      - latineast_asiaminor
+  balkans:
+    build:
+      context: balkans/
+    volumes:
+      - ./pdf:/pdf
+    network_mode: none      
+    depends_on:
+      - latineast_asiaminor
+  central_europe:
+    build:
+      context: central_europe/
+    volumes:
+      - ./pdf:/pdf
+    network_mode: none      
+    depends_on:
+      - latineast_asiaminor
+  cyprus:
+    build:
+      context: cyprus/
+    volumes:
+      - ./pdf:/pdf
+    network_mode: none      
+    depends_on:
+      - latineast_asiaminor
+  europe_mediterranean:
+    build:
+      context: europe_mediterranean/
+    volumes:
+      - ./pdf:/pdf
+    network_mode: none      
+    depends_on:
+      - latineast_asiaminor
+  europe_anatolia:
+    build:
+      context: europe_anatolia/
+    volumes:
+      - ./pdf:/pdf
+    network_mode: none      
+    depends_on:
+      - latineast_asiaminor
+  levant:
+    build:
+      context: levant/
+    volumes:
+      - ./pdf:/pdf
+    network_mode: none      
+    depends_on:
+      - latineast_asiaminor
+  niledelta:
+    build:
+      context: niledelta/
+    volumes:
+      - ./pdf:/pdf
+    network_mode: none      
+    depends_on:
+      - latineast_asiaminor
+  southwest_asia:
+    build:
+      context: southwest_asia/
+    volumes:
+      - ./pdf:/pdf
+    network_mode: none      
+    depends_on:
+      - latineast_arabia
+  arabian_peninsula:
+    build:
+      context: arabian_peninsula/
+    volumes:
+      - ./pdf:/pdf
+    network_mode: none      
+    depends_on:
+      - latineast_arabia
+      
+      

@@ -1,4 +1,4 @@
-FROM gmt_latineast_asiaminor:1.0
+FROM warfare_in_the_latin_east_latineast_arabia:latest
 
 ARG PROJECT=southwest_asia
 
@@ -7,5 +7,5 @@ ENV LANG=C.UTF-8 \
 
 WORKDIR /latineast/${PROJECT}
 
-CMD /bin/sh -c southwest_asia.sh --sleep
+CMD ./southwest_asia.sh && cp -v southwest_asia.pdf /pdf
 

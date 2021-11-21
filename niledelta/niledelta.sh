@@ -111,10 +111,3 @@ gmt begin niledelta_${EAST}
 gmt end
 # try gmt end show
 
-ls -l niledelta_${EAST}.pdf
-
-if [ "--sleep" = "$1" ]
-then
-    sleep 20
-fi
-

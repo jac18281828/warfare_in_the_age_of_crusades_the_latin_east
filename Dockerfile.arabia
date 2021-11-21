@@ -1,0 +1,10 @@
+FROM warfare_in_the_latin_east_bedrock_arabia:latest
+
+
+WORKDIR /latineast
+
+COPY southwest_asia/ southwest_asia
+COPY arabian_peninsula arabian_peninsula/
+
+CMD echo 'Bedrock for Arabia'
+

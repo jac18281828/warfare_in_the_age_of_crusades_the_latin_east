@@ -1,4 +1,4 @@
-FROM gmt_latineast_arabia:1.0
+FROM warfare_in_the_latin_east_latineast_arabia:latest
 
 ARG PROJECT=arabian_peninsula
 
@@ -7,4 +7,5 @@ ENV LANG=C.UTF-8 \
 
 WORKDIR /latineast/${PROJECT}
 
-CMD arabian_peninsula.sh --sleep
+CMD ./arabian_peninsula.sh && cp -v arabian_peninsula.pdf /pdf
+

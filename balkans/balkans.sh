@@ -104,8 +104,3 @@ gmt begin balkans
 
 gmt end
 # try gmt end show
-
-if [ "--sleep" = "$1" ]
-then
-    sleep 20
-fi

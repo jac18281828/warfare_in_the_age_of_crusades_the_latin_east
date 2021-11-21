@@ -93,7 +93,3 @@ gmt begin anatolia
 
 gmt end
 
-if [ "--sleep" = "$1" ]
-then
-    sleep 20
-fi

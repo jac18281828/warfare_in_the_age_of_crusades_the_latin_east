@@ -1,4 +1,4 @@
-FROM jac18281828/gmt:102221 as builder
+FROM jac18281828/gmt:110521 as builder
 
 WORKDIR /bedrock
 
@@ -9,10 +9,12 @@ ARG SOUTH=29
 
 RUN gmt grdcut /bedrock/ETOPO1_Bed_g_gmt4.grd -R${WEST}/${EAST}/${SOUTH}/${NORTH} -G/bedrock/ETOPO1_asiaminor.grd
 
-FROM debian:bullseye-slim
+FROM debian:stable-slim
 
-RUN apt update && \
-    apt -y install gmt gmt-gshhg-high ghostscript
+RUN export DEBIAN_FRONTEND=noninteractive && \
+        apt update && \
+        apt install -y -q --no-install-recommends \
+        gmt gmt-gshhg-high ghostscript
 
 COPY --from=builder /bedrock/ETOPO1_asiaminor.grd /bedrock/ETOPO1_asiaminor.grd
 
