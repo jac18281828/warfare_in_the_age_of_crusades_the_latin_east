@@ -2,8 +2,13 @@
 
 Book 1: Warfare in the Latin East
 
+This repository represents the source code to the regional map shells used for the book (Warfare in the Age of Crusades The Latin East)[https://2ad.com/pages/pen-and-sword-military.html]
+
+
 Map Shells built in Docker using GMT on Debian
 
-Execute:
+Getting Started:
 
-' $ sh build.sh `
+```
+$ docker-compose run levant
+```
