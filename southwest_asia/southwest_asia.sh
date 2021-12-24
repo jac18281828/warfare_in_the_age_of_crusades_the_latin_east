@@ -87,7 +87,3 @@ gmt begin southwest_asia
     
 gmt end
 
-if [ "--sleep" = "$1" ]
-then
-    sleep 20
-fi

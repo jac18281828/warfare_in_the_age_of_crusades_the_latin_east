@@ -98,7 +98,3 @@ gmt begin arabian_peninsula
 
 gmt end
 
-if [ "--sleep" = "$1" ]
-then
-    sleep 20
-fi
