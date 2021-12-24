@@ -2,9 +2,9 @@ FROM jac18281828/gmt:110521 as builder
 
 WORKDIR /bedrock
 
+ARG WEST=20
 ARG EAST=85
-ARG WEST=-5
-ARG NORTH=55
+ARG NORTH=50
 ARG SOUTH=10
 
 RUN gmt grdcut /bedrock/ETOPO1_Bed_g_gmt4.grd -R${WEST}/${EAST}/${SOUTH}/${NORTH} -G/bedrock/ETOPO1_arabia.grd

@@ -1,4 +1,5 @@
-FROM warfare_in_the_latin_east_bedrock_asiaminor:latest
+ARG PROJECT
+FROM ${PROJECT}_bedrock_asiaminor:latest
 
 WORKDIR /latineast
 

@@ -2,10 +2,8 @@
 
 WEST=25
 EAST=65
-
 NORTH=44
 SOUTH=10
-
 
 WIDTH=15c
 

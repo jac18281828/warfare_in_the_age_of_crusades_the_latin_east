@@ -2,8 +2,8 @@ FROM jac18281828/gmt:110521 as builder
 
 WORKDIR /bedrock
 
-ARG EAST=42
 ARG WEST=-5
+ARG EAST=42
 ARG NORTH=55
 ARG SOUTH=29
 
@@ -15,6 +15,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
         apt update && \
         apt install -y -q --no-install-recommends \
         gmt gmt-gshhg-high ghostscript
+
+RUN rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /bedrock/ETOPO1_asiaminor.grd /bedrock/ETOPO1_asiaminor.grd
 

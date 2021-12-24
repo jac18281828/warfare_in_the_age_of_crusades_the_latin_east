@@ -11,19 +11,17 @@ services:
   latineast_asiaminor:
     build:
       context: ./
-    depends_on:
-      - bedrock_asiaminor
-    network_mode: none
-  latineast_arabia:
-    build:
-      context: ./
-      dockerfile: Dockerfile.arabia
+      dockerfile: Dockerfile
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
     depends_on:
       - bedrock_asiaminor
     network_mode: none
   anatolia:
     build:
       context: anatolia/
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
     volumes:
       - ./pdf:/pdf
     network_mode: none      
@@ -32,6 +30,8 @@ services:
   balkans:
     build:
       context: balkans/
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
     volumes:
       - ./pdf:/pdf
     network_mode: none      
@@ -40,6 +40,8 @@ services:
   central_europe:
     build:
       context: central_europe/
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
     volumes:
       - ./pdf:/pdf
     network_mode: none      
@@ -48,6 +50,8 @@ services:
   cyprus:
     build:
       context: cyprus/
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
     volumes:
       - ./pdf:/pdf
     network_mode: none      
@@ -56,6 +60,8 @@ services:
   europe_mediterranean:
     build:
       context: europe_mediterranean/
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
     volumes:
       - ./pdf:/pdf
     network_mode: none      
@@ -64,6 +70,8 @@ services:
   europe_anatolia:
     build:
       context: europe_anatolia/
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
     volumes:
       - ./pdf:/pdf
     network_mode: none      
@@ -72,6 +80,18 @@ services:
   levant:
     build:
       context: levant/
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
+    volumes:
+      - ./pdf:/pdf
+    network_mode: none      
+    depends_on:
+      - latineast_asiaminor
+  levant_anatolia:
+    build:
+      context: levant_anatolia/
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
     volumes:
       - ./pdf:/pdf
     network_mode: none      
@@ -80,14 +100,27 @@ services:
   niledelta:
     build:
       context: niledelta/
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
     volumes:
       - ./pdf:/pdf
     network_mode: none      
     depends_on:
       - latineast_asiaminor
+  latineast_arabia:
+    build:
+      context: ./
+      dockerfile: Dockerfile.arabia
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
+    depends_on:
+      - bedrock_arabia
+    network_mode: none
   southwest_asia:
     build:
       context: southwest_asia/
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
     volumes:
       - ./pdf:/pdf
     network_mode: none      
@@ -96,10 +129,11 @@ services:
   arabian_peninsula:
     build:
       context: arabian_peninsula/
+      args:
+        PROJECT: ${COMPOSE_PROJECT_NAME}
     volumes:
       - ./pdf:/pdf
     network_mode: none      
     depends_on:
       - latineast_arabia
-      
-      
+   

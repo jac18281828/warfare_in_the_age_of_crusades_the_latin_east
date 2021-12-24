@@ -2,7 +2,6 @@
 
 WEST=23
 EAST=83
-
 NORTH=47
 SOUTH=17
 
