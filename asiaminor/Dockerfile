@@ -1,4 +1,4 @@
-FROM jac18281828/gmt:110521 as builder
+FROM jac18281828/bedrock:latest as builder
 
 WORKDIR /bedrock
 
