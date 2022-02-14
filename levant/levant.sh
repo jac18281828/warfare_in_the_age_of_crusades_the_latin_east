@@ -103,5 +103,3 @@ gmt begin levant
 
 gmt end
 # try gmt end show
-
-
